@@ -32,7 +32,7 @@ This workshop is divided in four steps.
 
 3. [Streaming Kafka Events as CDI](events/README.md): This step updates your Java code and now events are received as CDI events
 
-4. [Running in the Cloud](cloud/README.md): This last step 
+4. [Running in the Cloud](cloud/README.md): This last step brings all the previous together to create a data processing pipeline
 
 
 We'll be using Oracle Cloud NoSQL and Oracle Java Cloud Service to host our services, and the steps are the same if you use a different cloud provider.
