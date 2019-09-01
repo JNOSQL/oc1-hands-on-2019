@@ -6,6 +6,7 @@ services:
       - jakarta_nosql
     ports:
       - 2181:2181
+
   kafka:
     image: "confluent/kafka"
     networks:
@@ -18,5 +19,13 @@ services:
       - KAFKA_ADVERTISED_PORT=9092
     depends_on:
       - zookeeper
+
+  document:
+     image: "mongo:latest"
+     networks:
+       - jakarta_nosql
+     ports:
+       - 27017:27017
+
 networks:
     jakarta_nosql:
