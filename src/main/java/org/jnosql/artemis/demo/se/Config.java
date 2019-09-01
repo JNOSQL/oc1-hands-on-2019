@@ -7,4 +7,6 @@ import org.aerogear.kafka.cdi.annotation.KafkaConfig;
 public class Config {
 
     static final String TOPIC = "topic";
+
+    static final String GROUP_ID = "group";
 }
