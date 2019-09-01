@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.jnosql.demo</groupId>
+    <artifactId>demo-parent</artifactId>
+    <version>0.0.1</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <weld.se.core.version>3.1.2.Final</weld.se.core.version>
+        <yasson.version>1.0.4</yasson.version>
+        <maven.compile.targetLevel>1.8</maven.compile.targetLevel>
+        <maven.compile.sourceLevel>1.8</maven.compile.sourceLevel>
+        <maven.compile.version>3.5.1</maven.compile.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-shaded</artifactId>
+            <version>${weld.se.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>yasson</artifactId>
+            <version>${yasson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aerogear.kafka</groupId>
+            <artifactId>kafka-cdi-extension</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compile.version}</version>
+                <configuration>
+                    <target>${maven.compile.targetLevel}</target>
+                    <source>${maven.compile.sourceLevel}</source>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

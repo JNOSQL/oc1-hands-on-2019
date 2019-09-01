@@ -1,0 +1,31 @@
+version:  '3.2'
+services:
+  zookeeper:
+    image: "confluent/zookeeper"
+    networks:
+      - jakarta_nosql
+    ports:
+      - 2181:2181
+
+  kafka:
+    image: "confluent/kafka"
+    networks:
+      - jakarta_nosql
+    ports:
+      - 9092:9092
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_PORT=9092
+    depends_on:
+      - zookeeper
+
+  document:
+     image: "mongo:latest"
+     networks:
+       - jakarta_nosql
+     ports:
+       - 27017:27017
+
+networks:
+    jakarta_nosql:
