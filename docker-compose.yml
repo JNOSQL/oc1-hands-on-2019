@@ -3,13 +3,13 @@ services:
   zookeeper:
     image: "confluent/zookeeper"
     networks:
-      - microprofile
+      - jakarta_nosql
     ports:
       - 2181:2181
   kafka:
     image: "confluent/kafka"
     networks:
-      - microprofile
+      - jakarta_nosql
     ports:
       - 9092:9092
     environment:
@@ -19,4 +19,4 @@ services:
     depends_on:
       - zookeeper
 networks:
-    microprofile:
+    jakarta_nosql:
