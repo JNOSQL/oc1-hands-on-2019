@@ -11,8 +11,8 @@ public class MyPublisherService {
     @Producer
     private SimpleKafkaProducer<Integer, String> producer;
 
-    public void hello() {
-        producer.send("myTopic", "My Message");
+    public void sendMessage(String message) {
+        producer.send("myTopic", message);
     }
 
 }

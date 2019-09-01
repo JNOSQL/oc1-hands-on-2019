@@ -18,6 +18,7 @@ package org.jnosql.artemis.demo.se;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class App {
 
@@ -25,11 +26,14 @@ public class App {
     public static void main(String[] args) {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
-
             final MyPublisherService service = container.select(MyPublisherService.class).get();
-            service.hello();
 
+            ThreadLocalRandom random = ThreadLocalRandom.current();
+            for (int index = 0; index < 1_000_000; index++) {
+                service.sendMessage(Integer.toString(random.nextInt(0, 1000)));
+            }
         }
+
     }
 
     private App() {
