@@ -13,7 +13,7 @@ public class MyListenerService {
     public void init() {
         System.out.println("start ok");
     }
-    @Consumer(topics = "topic", groupId = "myGroupID")
+    @Consumer(topics = Config.TOPIC, groupId = "myGroupID")
     public void receiver(final JsonObject message) {
         final MyEntity entity = JsonUtils.fromJson(message, MyEntity.class);
         System.out.println("That's what I got: " + entity);

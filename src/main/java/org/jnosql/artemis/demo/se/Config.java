@@ -5,4 +5,6 @@ import org.aerogear.kafka.cdi.annotation.KafkaConfig;
 
 @KafkaConfig(bootstrapServers = "localhost:9092")
 public class Config {
+
+    static final String TOPIC = "topic";
 }
