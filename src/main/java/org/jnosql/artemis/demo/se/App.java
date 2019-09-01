@@ -30,7 +30,8 @@ public class App {
 
             ThreadLocalRandom random = ThreadLocalRandom.current();
             for (int index = 0; index < 1_000_000; index++) {
-                service.sendMessage(Integer.toString(random.nextInt(0, 1000)));
+                MyEntity entity = new MyEntity(Integer.toString(random.nextInt(0, 1000)));
+                service.sendMessage(entity);
             }
         }
 

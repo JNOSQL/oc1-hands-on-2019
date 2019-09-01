@@ -4,15 +4,16 @@ import org.aerogear.kafka.SimpleKafkaProducer;
 import org.aerogear.kafka.cdi.annotation.Producer;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.json.JsonObject;
 
 @ApplicationScoped
 public class MyPublisherService {
 
     @Producer
-    private SimpleKafkaProducer<Integer, String> producer;
+    private SimpleKafkaProducer<Integer, JsonObject> producer;
 
-    public void sendMessage(String message) {
-        producer.send("myTopic", message);
+    public <T> void sendMessage(T entity) {
+        producer.send("myTopic", JsonUtils.toJson(entity));
     }
 
 }
