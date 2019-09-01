@@ -13,7 +13,7 @@ public class MyPublisherService {
     private SimpleKafkaProducer<Integer, JsonObject> producer;
 
     public <T> void sendMessage(T entity) {
-        producer.send("myTopic", JsonUtils.toJson(entity));
+        producer.send("topic", JsonUtils.toJson(entity));
     }
 
 }
