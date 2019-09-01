@@ -29,7 +29,7 @@ public class App {
             final MyPublisherService service = container.select(MyPublisherService.class).get();
 
             ThreadLocalRandom random = ThreadLocalRandom.current();
-            for (int index = 0; index < 1_000_000; index++) {
+            for (int index = 0; index < 100; index++) {
                 MyEntity entity = new MyEntity(Integer.toString(random.nextInt(0, 1000)));
                 service.sendMessage(entity);
             }
