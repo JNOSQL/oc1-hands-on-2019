@@ -1,16 +1,12 @@
 package jakarta.nosql.demo;
 
-import jakarta.nosql.mapping.keyvalue.KeyValueTemplate;
-import org.eclipse.jnosql.artemis.DatabaseQualifier;
+import jakarta.nosql.demo.producer.DeviceService;
+import jakarta.nosql.demo.producer.StatusService;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 public class App {
 
@@ -23,13 +19,18 @@ public class App {
             Device device = new Device(deviceId, "name", status);
             TemperatureReadings readings = new TemperatureReadings(deviceId, status);
 
-            KeyValueTemplate template =
-                    container.select(KeyValueTemplate.class).get();
+            DeviceService deviceService =
+                    container.select(DeviceService.class)
+                            .get();
 
-            template.put(device);
-            template.put(readings, Duration.ofMinutes(5L));
-            System.out.println(template.get(deviceId, Device.class));
-            System.out.println(template.get(deviceId, TemperatureReadings.class));
+            StatusService statusService =
+                    container.select(StatusService.class)
+                            .get();
+
+            deviceService.save(device);
+            statusService.save(readings);
+            System.out.println(deviceService.find(deviceId));
+            System.out.println(statusService.find(deviceId));
 
 
         }
