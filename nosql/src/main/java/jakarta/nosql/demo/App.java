@@ -1,8 +1,5 @@
 package jakarta.nosql.demo;
 
-import jakarta.nosql.demo.producer.DeviceService;
-import jakarta.nosql.demo.producer.StatusService;
-
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.time.LocalDateTime;
@@ -31,8 +28,6 @@ public class App {
             statusService.save(readings);
             System.out.println(deviceService.find(deviceId));
             System.out.println(statusService.find(deviceId));
-
-
         }
     }
 }

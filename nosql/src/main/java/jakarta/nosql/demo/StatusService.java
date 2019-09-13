@@ -1,6 +1,5 @@
-package jakarta.nosql.demo.producer;
+package jakarta.nosql.demo;
 
-import jakarta.nosql.demo.TemperatureReadings;
 import jakarta.nosql.mapping.Database;
 import jakarta.nosql.mapping.DatabaseType;
 import jakarta.nosql.mapping.keyvalue.KeyValueTemplate;

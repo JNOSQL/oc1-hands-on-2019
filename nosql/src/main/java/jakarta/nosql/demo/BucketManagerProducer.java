@@ -1,4 +1,4 @@
-package jakarta.nosql.demo.producer;
+package jakarta.nosql.demo;
 
 import jakarta.nosql.keyvalue.BucketManager;
 import jakarta.nosql.mapping.Database;
