@@ -3,34 +3,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jnosql.demo</groupId>
-    <artifactId>events</artifactId>
+    <artifactId>nosql</artifactId>
     <version>0.0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <weld.se.core.version>3.1.2.Final</weld.se.core.version>
-        <yasson.version>1.0.4</yasson.version>
-        <maven.compile.targetLevel>1.8</maven.compile.targetLevel>
+         <maven.compile.targetLevel>1.8</maven.compile.targetLevel>
         <maven.compile.sourceLevel>1.8</maven.compile.sourceLevel>
         <maven.compile.version>3.5.1</maven.compile.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.jboss.weld.se</groupId>
-            <artifactId>weld-se-shaded</artifactId>
-            <version>${weld.se.core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse</groupId>
-            <artifactId>yasson</artifactId>
-            <version>${yasson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aerogear.kafka</groupId>
-            <artifactId>kafka-cdi-extension</artifactId>
-            <version>0.1.0</version>
-        </dependency>
     </dependencies>
 
 
