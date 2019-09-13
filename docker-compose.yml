@@ -20,12 +20,12 @@ services:
     depends_on:
       - zookeeper
 
-  document:
-     image: "mongo:latest"
-     networks:
-       - jakarta_nosql
-     ports:
-       - 27017:27017
+  key-value:
+    image: "redis"
+    networks:
+      - jakarta_nosql
+    ports:
+      - 6379:6379
 
 networks:
     jakarta_nosql:
