@@ -1,6 +1,8 @@
 package org.jnosql.artemis.demo.kafka;
 
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Objects;
@@ -33,6 +35,10 @@ public class Bootstrap {
 
   public <K, V> KafkaProducer<K, V> startProducer(Serializer<K> keySerializer, Serializer<V> valueSerializer) {
     return new KafkaProducer<>(getKafkaProducerProperties(), keySerializer, valueSerializer);
+  }
+  
+  public <K, V> KafkaConsumer<K, V> startConsumer(Deserializer<K> keyDeserializer, Deserializer<V> valueDeserializer) {
+	  return new KafkaConsumer<K, V>(getKafkaProducerProperties(), keyDeserializer, valueDeserializer);
   }
 
 }
