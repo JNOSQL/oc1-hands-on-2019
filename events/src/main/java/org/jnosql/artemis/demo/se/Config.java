@@ -3,10 +3,10 @@ package org.jnosql.artemis.demo.se;
 
 import org.aerogear.kafka.cdi.annotation.KafkaConfig;
 
-@KafkaConfig(bootstrapServers = "#{kafka_host}:#{kafka_port}")
+@KafkaConfig()
 public class Config {
 
-    static final String TOPIC = "topic";
+    static final String TOPIC = "temperatureReadings";
 
     static final String GROUP_ID = "group";
 }

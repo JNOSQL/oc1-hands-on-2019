@@ -15,27 +15,44 @@
 
 package org.jnosql.artemis.demo.se;
 
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
-import java.util.concurrent.ThreadLocalRandom;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class App {
 
+	private static final Logger logger = LoggerFactory.getLogger(App.class);
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+		String deviceId = args.length > 0 ? args[0] : UUID.randomUUID().toString();
 
-        try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
-            final MyPublisherService service = container.select(MyPublisherService.class).get();
-            ThreadLocalRandom random = ThreadLocalRandom.current();
-            for (int index = 0; index < 100; index++) {
-                MyEntity entity = new MyEntity(Integer.toString(random.nextInt(0, 1000)));
-                service.sendMessage(entity);
-            }
-        }
+		SeContainer container = SeContainerInitializer.newInstance().initialize();
+		
+		container.select(MyListenerService.class).get();
+		
+		final MyPublisherService service = container.select(MyPublisherService.class).get();
+		ThreadLocalRandom random = ThreadLocalRandom.current();
+		for (int index = 0; index < 10; index++) {
+			TemperatureReading reading = new TemperatureReading();
+			reading.setTimestamp(System.currentTimeMillis());
+			reading.setDeviceId(deviceId);
+			reading.setTemperature(50 + 100 * random.nextFloat());
+			logger.debug("Sending {} as reading", reading);
+			service.sendMessage(reading);
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				//NOOP
+			}
+		}
+		
+	}
 
-    }
-
-    private App() {
-    }
+	private App() {
+	}
 }
