@@ -62,3 +62,9 @@ So, the demo environment has:
 We'll provide the device simulators and a dashboard client, and your job is to develop the server that receives the readings first as Kafka events, later as CDI events, storing them in a Key-Value (Redis) database so that when a dashboard client asks for data, it'll be returned by your service.
 
 The four steps in the lab will enable you to develop such server, and we hope that this can serve as starting point for many other different use cases. There are different ways to do this processing (for example, using Kafka Streams) that can be explored later!
+
+### Twitter
+
+* [otaviojava](https://twitter.com/otaviojava)
+* [leomrlima](https://twitter.com/leomrlima)
+* [gamussa](https://twitter.com/gamussa)
