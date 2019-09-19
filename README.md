@@ -104,4 +104,11 @@ java -cp target/kafka-0.0.1.jar org.jnosql.artemis.demo.kafka.client.DeviceEvent
 10:44:21.307 [main] INFO  o.j.a.d.k.client.DeviceEventReceiver - New record: TemperatureReading [deviceId=device1, timestamp=1568915060894, temperature=142.64621]
 ```
 
+## Step 2: Connecting to Redis using JNoSQL
 
+### Running in the command line
+```
+cd nosql
+mvn clean package
+java -cp target/nosql-0.0.1.jar:target/lib/* jakarta.nosql.demo.App YOUR_DEVICE_ID
+```

@@ -14,4 +14,4 @@ test-output/
 /.idea
 .settings/
 .project
-kafka/dependency-reduced-pom.xml
+**/dependency-reduced-pom.xml
