@@ -1,14 +1,10 @@
-# Payara Micro Maven for Platform.sh
+# Cloud
 
-This project provides a starter kit for Payara Micro projects hosted on Platform.sh.
+Platform.sh is a next-generation Platform-as-a-Service (PaaS) that offers both a hosting application and services, like MySQL, PostgreSQL, and Kafka, through the infrastructure-as-code concept. Platform.sh manages everything—from hosting to global deployment and support—so developers can focus on creating amazing new apps, features and what matters most -- faster delivery.
 
-Payara Micro is an Open Source, lightweight Java EE (Jakarta EE) microservices deployments.
 
-## Services
 
-* Java 8
-
-## Customizations
+## Cloud Configuration
 
 The following files and additions make the framework work.  If using this project as a reference for your own existing project, replicate the changes below to your project.
 
