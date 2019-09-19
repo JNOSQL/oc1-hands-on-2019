@@ -35,17 +35,6 @@
 			<artifactId>javax.json.bind-api</artifactId>
 			<version>1.0</version>
 		</dependency>
-		<dependency>
-			<groupId>com.github.gAmUssA</groupId>
-			<artifactId>streaming-utils</artifactId>
-			<version>-SNAPSHOT</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
 	</dependencies>
 
 	<repositories>
@@ -65,6 +54,24 @@
 					<target>${maven.compile.targetLevel}</target>
 					<source>${maven.compile.sourceLevel}</source>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

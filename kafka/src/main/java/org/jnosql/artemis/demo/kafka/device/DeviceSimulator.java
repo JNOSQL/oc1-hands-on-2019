@@ -1,16 +1,15 @@
 package org.jnosql.artemis.demo.kafka.device;
 
-import org.jnosql.artemis.demo.kafka.Bootstrap;
-import org.jnosql.artemis.demo.kafka.KafkaConnection;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.File;
 import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+
+import org.jnosql.artemis.demo.kafka.Bootstrap;
+import org.jnosql.artemis.demo.kafka.KafkaConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DeviceSimulator {
 
@@ -19,8 +18,7 @@ public class DeviceSimulator {
 	public static void main(String[] args) {
 		String applicationName = args.length > 0 ? args[0] : UUID.randomUUID().toString();
 		String deviceId = args.length > 1 ? args[1] : UUID.randomUUID().toString();
-		String configLocation = args.length > 2 ? args[2]
-				: System.getProperty("user.home") + File.separator + ".ccloud" + File.separator + "config.oc1";
+		String configLocation = args.length > 2 ? args[2] : "config.oc1";
 
 		Bootstrap bootstrap = new Bootstrap(applicationName, configLocation);
 		KafkaConnection connection = new KafkaConnection("temperatureReadings", bootstrap);

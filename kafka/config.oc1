@@ -1,7 +1,7 @@
-ssl.endpoint.identification.algorithm=https
-sasl.mechanism=PLAIN
-request.timeout.ms=20000
-bootstrap.servers=pkc-lgk0v.us-west1.gcp.confluent.cloud:9092
+bootstrap.servers=kafka:9092
 retry.backoff.ms=500
-sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="[API_KEY]" password="[SECRET]";
-security.protocol=SASL_SSL
+delivery.timeout.ms=30000
+batch.size=16384
+linger.ms=100
+buffer.memory=33554432
+retries=1000
