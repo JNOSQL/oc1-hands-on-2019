@@ -15,35 +15,33 @@ import javax.enterprise.inject.Produces;
 @ApplicationScoped
 class BucketManagerProducer {
 
-    static final String DEVICE_BUCKET = "device";
-    static final String STATUS_BUCKET = "status";
+	static final String DEVICE_BUCKET = "device";
+	static final String STATUS_BUCKET = "status";
 
-    private RedisConfiguration configuration;
+	private RedisConfiguration configuration;
 
-    private RedisBucketManagerFactory managerFactory;
+	private RedisBucketManagerFactory managerFactory;
 
-    @PostConstruct
-    void init() {
-        configuration = new RedisConfiguration();
-        managerFactory = configuration.get();
-    }
+	@PostConstruct
+	void init() {
+		configuration = new RedisConfiguration();
+		managerFactory = configuration.get();
+	}
 
+	@Produces
+	@Database(value = DatabaseType.KEY_VALUE, provider = DEVICE_BUCKET)
+	BucketManager getManagerDevice() {
+		return managerFactory.getBucketManager(DEVICE_BUCKET);
+	}
 
-    @Produces
-    @Database(value = DatabaseType.KEY_VALUE, provider = DEVICE_BUCKET)
-    BucketManager getManagerDevice() {
-        return managerFactory.getBucketManager(DEVICE_BUCKET);
-    }
+	@Produces
+	@Database(value = DatabaseType.KEY_VALUE, provider = STATUS_BUCKET)
+	BucketManager getManagerStatus() {
+		return managerFactory.getBucketManager(STATUS_BUCKET);
+	}
 
-    @Produces
-    @Database(value = DatabaseType.KEY_VALUE, provider = STATUS_BUCKET)
-    BucketManager getManagerStatus() {
-        return managerFactory.getBucketManager(STATUS_BUCKET);
-    }
-
-
-    void destroy(@Disposes @Any BucketManager manager) {
-        manager.close();
-    }
+	void destroy(@Disposes @Any BucketManager manager) {
+		manager.close();
+	}
 
 }

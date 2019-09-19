@@ -9,16 +9,15 @@ import java.util.Optional;
 
 public class DeviceService {
 
-    @Inject
-    @Database(value = DatabaseType.KEY_VALUE, provider = BucketManagerProducer.DEVICE_BUCKET)
-    private KeyValueTemplate template;
+	@Inject
+	@Database(value = DatabaseType.KEY_VALUE, provider = BucketManagerProducer.DEVICE_BUCKET)
+	private KeyValueTemplate template;
 
+	public void save(Device device) {
+		this.template.put(device);
+	}
 
-    public void save(Device device) {
-        this.template.put(device);
-    }
-
-    public Optional<Device> find(String deviceId) {
-        return template.get(deviceId, Device.class);
-    }
+	public Optional<Device> find(String deviceId) {
+		return template.get(deviceId, Device.class);
+	}
 }
