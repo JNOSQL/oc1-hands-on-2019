@@ -106,9 +106,36 @@ java -cp target/kafka-0.0.1.jar org.jnosql.artemis.demo.kafka.client.DeviceEvent
 
 ## Step 2: Connecting to Redis using JNoSQL
 
+In the "nosql" folder, you'll find code that connects to a Redis database using the JNoSQL project.
+
+This is a CDI project, so it has the required META-INF/beans.xml file with the default values. The *Device*, *TemperatureReadings* and *TemperatureStatus* are domain entities that will hold the values read for the devices. *DeviceService* and *StatusService* are the Service beans that the application will use to access the database instances. Note that StatusService defines a duration of 5 minutes (in *DEFAULT_DURATION*), so that its values expire after that time and entites saved there won't be available after 5 minutes.
+
 ### Running in the command line
+
+Go back to the repository root and then...
+
 ```
 cd nosql
 mvn clean package
 java -cp target/nosql-0.0.1.jar:target/lib/* jakarta.nosql.demo.App YOUR_DEVICE_ID
 ```
+
+When you first run with a given Device ID (for example, *dvc42*), it will show that the device was not found and will create the entities for you. When you run it again, it'll be able to find the Device and Status entities. If you run again after 5 minutes, only the Device entity will be found, because of the expiration mentioned before.
+
+Running dvc42 for the first time:
+```
+13:20:47.899 [main] DEBUG jakarta.nosql.demo.App - Device ID found: false
+13:20:47.899 [main] DEBUG jakarta.nosql.demo.App - No Device with given ID, creating one with 0C as value
+13:20:48.116 [main] DEBUG jakarta.nosql.demo.App - Device & Status created
+```
+
+Running dvc42 for the second time:
+```
+13:21:35.042 [main] DEBUG jakarta.nosql.demo.App - Device ID found: true
+13:21:35.042 [main] INFO jakarta.nosql.demo.App - Device found: Device{id='dvc42', name='name', lastStatus=TemperatureStatus{time=2019-09-19T13:20:47.953, temperature=0.0}}
+13:21:35.046 [main] INFO jakarta.nosql.demo.App - Status found: true
+13:21:35.047 [main] INFO jakarta.nosql.demo.App - Device Status: TemperatureReadings{id='dvc42', status=TemperatureStatus{time=2019-09-19T13:20:47.953, temperature=0.0}}
+```
+
+Running dvc42 for a third time, 5 minutes or more after the first run:
+ 
