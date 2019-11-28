@@ -25,16 +25,15 @@ public class App {
 
     public static void main(String[] args) {
 
-        try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
-            final MyPublisherService service = container.select(MyPublisherService.class).get();
-            ThreadLocalRandom random = ThreadLocalRandom.current();
-            for (int index = 0; index < 100; index++) {
-                MyEntity entity = new MyEntity(Integer.toString(random.nextInt(0, 1000)));
-                service.sendMessage(entity);
-            }
+        SeContainer container = SeContainerInitializer.newInstance().initialize();
+        final MyPublisherService service = container.select(MyPublisherService.class).get();
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        for (int index = 0; index < 100; index++) {
+            MyEntity entity = new MyEntity(Integer.toString(random.nextInt(0, 1000)));
+            service.sendMessage(entity);
         }
-
     }
+
 
     private App() {
     }
