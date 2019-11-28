@@ -2,7 +2,21 @@
 
 Platform.sh is a next-generation Platform-as-a-Service (PaaS) that offers both a hosting application and services, like MySQL, PostgreSQL, and Kafka, through the infrastructure-as-code concept. Platform.sh manages everything—from hosting to global deployment and support—so developers can focus on creating amazing new apps, features and what matters most -- faster delivery.
 
+## Execute
 
+* `mvn -DskipTests clean package payara-micro:bundle`
+* `java -jar -Xmx512m -Dkafka_host=localhost -Dkafka_port=9092 target/microprofile-microbundle.jar`
+
+### Data
+
+* `curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/devices --data '{"id": "sao-paulo", "timestamp": 1574970735, "temperature": 23.12}'`
+* `curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/devices --data '{"id": "bahia", "timestamp": 1574970735, "temperature": 112.12}'`
+* `curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/devices --data '{"id": "sergipe", "timestamp": 1574970735, "temperature": 200.12}'`
+
+#### Retrieve data
+
+* `curl -X GET -i http://localhost:8080/devices/status`
+* `curl -X GET -i http://localhost:8080/devices/`
 
 ## Cloud Configuration
 
