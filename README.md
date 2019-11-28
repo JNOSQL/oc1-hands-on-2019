@@ -2,11 +2,6 @@
 
 Modern microservice-based architecture needs to exchange data in a fast and reliable way. The use of distributed streaming platforms such as Apache Kafka makes the job easier, but that's not enough. Applications also use NoSQL databases to store information that comes from one or more sources. So it makes perfect sense to use Kafka and NoSQL to create a distributed streaming and processing pipeline between applications. This hands-on lab explores such architecture, deploying applications with Cloud technologies such as Redis NoSQL Database and sending events to a second application with Kafka and Jakarta EE technologies such as JNoSQL to connect to the database and receive Kafka messages as CDI events.
 
-
-## Slides
-
-TBD
-
 ## Requirements
 
 Please have your laptop ready with these tools, so your experience is smooth while working the lab!
