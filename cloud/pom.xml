@@ -16,7 +16,7 @@
         <version.payara.micro>5.193.1</version.payara.micro>
         <payara.version>1.0.5</payara.version>
         <platform.sh.version>2.2.2</platform.sh.version>
-        <jakarta.nosql.version>0.1.0-SNAPSHOT</jakarta.nosql.version>
+        <jakarta.nosql.version>1.0.0-b1</jakarta.nosql.version>
     </properties>
 
     <build>
