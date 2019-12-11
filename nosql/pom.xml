@@ -29,6 +29,11 @@
             <artifactId>yasson</artifactId>
             <version>1.0.4</version>
         </dependency>
+        <dependency>
+            <groupId>io.smallrye</groupId>
+            <artifactId>smallrye-config</artifactId>
+            <version>1.4.1</version>
+        </dependency>
         <!--mapper dependency-->
         <dependency>
             <groupId>org.eclipse.jnosql.artemis</groupId>
